@@ -7,6 +7,7 @@ import './FullPost.css';
 class FullPost extends Component {
     state = {
         loadedPost: null,
+        
     }
 
     componentDidUpdate() {
@@ -26,10 +27,13 @@ class FullPost extends Component {
             .then(res=>{
                 console.log(res)
             })
+
     }
 
     render () {
-        let post = <p style={{textAlign:'center'}}>Please select a Post!</p>;
+        let post = <p style={{textAlign:'center'}}>Something went wrong, try again later.</p>;
+        if(!this.state.error){
+        post = <p style={{textAlign:'center'}}>Please select a Post!</p>;
         if(this.props.id){
             post = <p style={{textAlign:'center'}}>Loading...</p>;
         }
@@ -44,6 +48,7 @@ class FullPost extends Component {
                 </div>
     
             );
+        }
         }
         
         return post;
